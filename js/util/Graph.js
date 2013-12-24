@@ -78,6 +78,7 @@ var Node = function($container, name) {
 
     // default color of Node.
     this._color = '#fff';
+    this._setPlayer = -1;
 };
 
 module.exports = {
@@ -133,10 +134,20 @@ Node.prototype = {
     },
 
     /**
+     * gets the player who set the node.
+     * @returns {Number}
+     */
+    getSetPlayer: function() {
+        return this._setPlayer;
+    },
+
+    /**
      * Expects player to be a number (0) or (1)
      * @param {Number} player
      */
     setPlayer: function(player) {
+        this._player = player;
+
         // 0 is player1, 1 is player2
         if (player === 0) {
             this._enterColor = P1_HOVER_COLOR;
@@ -159,6 +170,7 @@ Node.prototype = {
             'background-color': this._setColor
         });
         this._color = this._setColor;
+        this._setPlayer = this._player;
     }
 };
 
