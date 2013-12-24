@@ -1,5 +1,6 @@
 /*
- * Builds the
+ * Build for the tic tac toe rx modules.
+ *
  * Copyright (c) 2013 Michael Brady Paulson
  * Licensed under the MIT license.
  */
@@ -16,29 +17,35 @@ module.exports = function (grunt) {
     grunt.initConfig({
         // Configuration to be run (and then tested).
         build_me: {
-            options: {
-                main: './js/main.js',
-                out: './static/dist/main.js'
+            compile: {
+                options: {
+                    main: './js/main.js',
+                    out: './static/dist/main.js',
+                    require: {
+                        './node_modules/rx/rx.lite.js': 'rx',
+                        './node_modules/rx/rx.binding.js': 'rx-binding',
+                        'jquery-browserify': 'jquery',
+                        './js/main.js': 'TicTacToe'
+                    }
+                }
             }
+        },
+
+        watch: {
+            files: ['./js/**/*.js'],
+            tasks: ['build_me']
         }
     });
 
     // Actually load this plugin's task(s).
     grunt.loadTasks('tasks');
 
-    // Building the template file for the build_me task.
-    grunt.registerMultiTask('build_me', 'Its the temporary building system.', function(target) {
-        grunt.log.write('Testing: ' + JSON.stringify(this.options));
-    });
-
     // By default, lint and run all tests.
-    grunt.registerTask('default', ['manifest_json', 'watch']);
+    grunt.registerTask('default', ['build_me', 'watch']);
 };
 
 
 function browserifyBuild(options) {
     var requires = options.requires;
     var b = browserify();
-
-    for ()
 }

@@ -2,13 +2,14 @@
 <html>
 <head>
     <title></title>
-    <script type="application/javascript" src="/dist/index.js"></script>
+    <script type="application/javascript" src="./dist/main.js"></script>
     <script type="application/javascript">
-        var $output = $('.output');
-        var key = Rx.Observable.fromEvent(document, 'keyup')
-            .subscribe(function(keyPress) {
-                $output.html(JSON.stringify(keyPress));
-            });
+        var $ = require('jquery');
+
+        $(function() {
+            var TicTacToe = require('TicTacToe');
+            var ttt = new TicTacToe($('.output'));
+        });
 
     </script>
 </head>
