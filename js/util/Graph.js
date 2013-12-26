@@ -55,6 +55,9 @@ function graph($container, options) {
     return board;
 };
 
+/**
+ * If i were going to spend any more time in this project This would be the class i would change.  I don't like it!
+ */
 var Node = function($container, name) {
     var neighbors = this._neighbors = {};
 
