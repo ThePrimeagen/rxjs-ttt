@@ -18,7 +18,9 @@ var TicTacToe = function($element) {
     gameWinObservable
         .subscribe(function(winData) {
             var nodes = winData.nodes;
-            console.log(nodes);
+            for (var i = 0; i < nodes.length; i++) {
+                nodes[i].color('#700');
+            }
         });
 };
 

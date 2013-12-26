@@ -116,6 +116,16 @@ Node.prototype = {
     },
 
     /**
+     * Will color the node
+     */
+    color: function(color) {
+        this._$el.css({
+            'background-color': color
+        });
+        return this;
+    },
+
+    /**
      * exits the node
      */
     exit: function() {
